@@ -1,0 +1,20 @@
+{
+  "name": "schwartzcode/dinstar",
+  "description": "This implements the API for GSM gateway",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Alexey Shevchenko",
+      "email": "adieush@gmail.com"
+    },
+    {
+      "name": "Pavel Sachenko",
+      "email": "pavel31.pavel31@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "guzzlehttp/guzzle": ">= 7.2"
+  }
+}
