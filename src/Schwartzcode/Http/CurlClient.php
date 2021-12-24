@@ -11,8 +11,6 @@ class CurlClient implements Client {
     protected $curlOptions = array();
     protected $debugHttp = false;
 
-    public $lastRequest = null;
-    public $lastResponse = null;
 
     public function __construct(array $options = array()) {
         $this->curlOptions = $options;
@@ -41,9 +39,7 @@ class CurlClient implements Client {
         $options = $this->options($method, $url, $params, $data, $headers,
                                   $user, $password, $timeout);
 
-
-        define('USERNAME', 'commd');
-        define('PASSWORD', 'Fudg349fdsl?ksdfgpo3_');
+        
         try {
             if (!$curl = curl_init()) {
                 throw new EnvironmentException('Unable to initialize cURL');

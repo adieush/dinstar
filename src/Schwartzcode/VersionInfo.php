@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Twilio;
+namespace Schwartzcode;
 
 
 class VersionInfo {
-    const MAJOR = 5;
-    const MINOR = 23;
+    const MAJOR = 0;
+    const MINOR = 0;
     const PATCH = 1;
 
     public static function string() {

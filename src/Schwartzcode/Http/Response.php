@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Twilio\Http;
+namespace Schwartzcode\Http;
 
 
 class Response {
