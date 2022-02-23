@@ -126,5 +126,11 @@ class Client
         }
     }
 
-
+    /**
+     * @return string
+     */
+    public function testForSmsServer(): string
+    {
+        return "success";
+    }
 }
