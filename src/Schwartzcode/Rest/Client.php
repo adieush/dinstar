@@ -126,4 +126,17 @@ class Client
         }
     }
 
+    public function querySmsResult($dataArray){
+        try {
+            return $this->request(
+                'POST',
+                $this->uri . '/query_sms_result',
+                null,
+                json_encode($dataArray)
+            );
+        } catch (ErrorException $e) {
+        } catch (EnvironmentException $e) {
+        }
+    }
+
 }
