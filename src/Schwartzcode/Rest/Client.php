@@ -139,4 +139,17 @@ class Client
         }
     }
 
+    public function queryIncomingSms($dataArray){
+        try {
+            return $this->request(
+                'GET',
+                $this->uri . '/query_incoming_sms',
+                null,
+                json_encode($dataArray)
+            );
+        } catch (ErrorException $e) {
+        } catch (EnvironmentException $e) {
+        }
+    }
+
 }
