@@ -1,4 +1,5 @@
 <?php
+
 namespace Schwartzcode\Rest;
 
 
@@ -26,7 +27,8 @@ class Client
      * @param HttpClient $httpClient HttpClient, defaults to CurlClient
      * @throws ConfigurationException If valid authentication is not present
      */
-    public function __construct(array $params, HttpClient $httpClient = null) {
+    public function __construct(array $params, HttpClient $httpClient = null)
+    {
 
         $this->username = !empty($params['username']) ? $params['username'] : null;
         $this->password = !empty($params['password']) ? $params['password'] : null;
@@ -75,7 +77,8 @@ class Client
      * @throws EnvironmentException
      * @throws ErrorException
      */
-    public function request($method, $uri, $params = array(), $data = array(), $headers = array(), $username = null, $password = null, $timeout = null) {
+    public function request($method, $uri, $params = array(), $data = array(), $headers = array(), $username = null, $password = null, $timeout = null)
+    {
         $username = $username ? $username : $this->username;
         $password = $password ? $password : $this->password;
 
@@ -109,11 +112,13 @@ class Client
      *
      * @return HttpClient Current HttpClient
      */
-    public function getHttpClient() {
+    public function getHttpClient()
+    {
         return $this->httpClient;
     }
 
-    public function sendSms($dataArray){
+    public function sendSms($dataArray)
+    {
         try {
             return $this->request(
                 'POST',
@@ -126,7 +131,8 @@ class Client
         }
     }
 
-    public function querySmsResult($dataArray){
+    public function querySmsResult($dataArray)
+    {
         try {
             return $this->request(
                 'POST',
@@ -139,7 +145,8 @@ class Client
         }
     }
 
-    public function queryIncomingSms($dataArray){
+    public function queryIncomingSms($dataArray)
+    {
         try {
             return $this->request(
                 'GET',
@@ -152,4 +159,33 @@ class Client
         }
     }
 
+/**********************************--------USSD requests-------********************************/
+
+    public function sendUssd($dataArray)
+    {
+        try {
+            return $this->request(
+                'POST',
+                $this->uri . '/send_ussd',
+                null,
+                json_encode($dataArray)
+            );
+        } catch (ErrorException $e) {
+        } catch (EnvironmentException $e) {
+        }
+    }
+
+    public function queryUssdReply($dataArray)
+    {
+        try {
+            return $this->request(
+                'GET',
+                $this->uri . '/query_ussd_reply',
+                null,
+                json_encode($dataArray)
+            );
+        } catch (ErrorException $e) {
+        } catch (EnvironmentException $e) {
+        }
+    }
 }
