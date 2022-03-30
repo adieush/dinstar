@@ -145,14 +145,14 @@ class Client
         }
     }
 
-    public function queryIncomingSms($dataArray)
+    public function queryIncomingSms($port)
     {
         try {
             return $this->request(
                 'GET',
-                $this->uri . '/query_incoming_sms',
+                $this->uri . "/query_incoming_sms?flag=unread&port=$port",
                 null,
-                json_encode($dataArray)
+//                json_encode($dataArray)
             );
         } catch (ErrorException $e) {
         } catch (EnvironmentException $e) {
