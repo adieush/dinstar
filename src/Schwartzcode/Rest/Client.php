@@ -151,7 +151,7 @@ class Client
             return $this->request(
                 'GET',
                 $this->uri . '/query_incoming_sms',
-                json_encode($params)
+                $params
             );
         } catch (ErrorException $e) {
         } catch (EnvironmentException $e) {
