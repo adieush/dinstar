@@ -145,14 +145,13 @@ class Client
         }
     }
 
-    public function queryIncomingSms($port)
+    public function queryIncomingSms($params)
     {
         try {
             return $this->request(
                 'GET',
-                $this->uri . "/query_incoming_sms?flag=unread&port=$port",
-                null,
-//                json_encode($dataArray)
+                $this->uri . '/query_incoming_sms',
+                json_encode($params)
             );
         } catch (ErrorException $e) {
         } catch (EnvironmentException $e) {
@@ -175,13 +174,13 @@ class Client
         }
     }
 
-    public function queryUssdReply($port)
+    public function queryUssdReply($params)
     {
         try {
             return $this->request(
                 'GET',
-                $this->uri . '/query_ussd_reply?port='.$port,
-                null
+                $this->uri . '/query_ussd_reply',
+                json_encode($params),
 //                json_encode($dataArray)
             );
         } catch (ErrorException $e) {
