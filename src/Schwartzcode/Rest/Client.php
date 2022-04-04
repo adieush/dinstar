@@ -174,14 +174,13 @@ class Client
         }
     }
 
-    public function queryUssdReply($params)
+    public function queryUssdReply($port)
     {
         try {
             return $this->request(
                 'GET',
-                $this->uri . '/query_ussd_reply',
-                json_encode($params),
-//                json_encode($dataArray)
+                $this->uri . "/query_ussd_reply?port=$port",
+                null
             );
         } catch (ErrorException $e) {
         } catch (EnvironmentException $e) {
