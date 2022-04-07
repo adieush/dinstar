@@ -39,7 +39,6 @@ class CurlClient implements Client {
         $options = $this->options($method, $url, $params, $data, $headers,
                                   $user, $password, $timeout);
 
-        return json_encode($options);
         try {
             if (!$curl = curl_init()) {
                 throw new EnvironmentException('Unable to initialize cURL');
@@ -49,7 +48,11 @@ class CurlClient implements Client {
                 throw new EnvironmentException(curl_error($curl));
             }
 
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            if (strtoupper($method) != 'GET'){
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+            }else{
+                curl_setopt($curl, CURLOPT_URL, $options[10002]);
+            }
 
             if (!$response = curl_exec($curl)) {
                 throw new EnvironmentException(curl_error($curl));
