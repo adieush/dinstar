@@ -39,7 +39,7 @@ class CurlClient implements Client {
         $options = $this->options($method, $url, $params, $data, $headers,
                                   $user, $password, $timeout);
 
-        
+        return json_encode($options);
         try {
             if (!$curl = curl_init()) {
                 throw new EnvironmentException('Unable to initialize cURL');
