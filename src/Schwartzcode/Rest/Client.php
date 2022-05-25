@@ -186,4 +186,18 @@ class Client
         } catch (EnvironmentException $e) {
         }
     }
+
+    /**********************************--------INFO requests-------********************************/
+    public function getPortInfo($params)
+    {
+        try {
+            return $this->request(
+                'GET',
+                $this->uri . "/get_port_info",
+                $params,
+            );
+        } catch (ErrorException $e) {
+        } catch (EnvironmentException $e) {
+        }
+    }
 }
